@@ -16,7 +16,7 @@ A Python-based agent that performs autonomous web research, evaluates source cre
 
 1.  **Clone the Repository**
     ```bash
-    git clone [https://github.com/yourusername/research-agent.git](https://github.com/yourusername/research-agent.git)
+    git clone [https://github.com/DrahcirSnave/research-agent.git](https://github.com/DrahcirSnave/research-agent.git)
     cd research-agent
     ```
 
