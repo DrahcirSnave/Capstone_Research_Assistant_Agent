@@ -18,8 +18,8 @@ def format_output(topic):
     output_md += "### 📚 References\n"
 
     for source in response['sources']:
-        cred_icon = "🟢" if "High" in source['credibility'] else "asd"
-        output_md += f"* 🔗 [{source['title']}]({source['url']}) - _{source['credibility']}_\n"
+        cred_icon = "🟢" if "High" in source['credibility'] else "⚠️"
+        output_md += f"* {cred_icon} 🔗 [{source['title']}]({source['url']}) - _{source['credibility']}_\n"
 
     return output_md
 
@@ -56,4 +56,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     btn_long.click(fn=lambda: handle_feedback("too short"), outputs=feedback_status)
 
 if __name__ == "__main__":
-    demo.launch(share=False)
+    # UPDATED LAUNCH COMMAND
+    # server_name="0.0.0.0" allows external connections (fixes Docker/WSL issues)
+    # share=True creates a public link (fixes firewall/port issues)
+    demo.launch(server_name="0.0.0.0", share=True)
