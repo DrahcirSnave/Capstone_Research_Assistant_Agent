@@ -7,7 +7,8 @@ from utils import load_memory, evaluate_source, safety_check
 # Initialize Model
 print("Loading Summarization Model...")
 # Using cpu explicitly here to be safe on standard codespaces
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=-1)
+# URL: https://huggingface.co/sshleifer/distilbart-cnn-12-6
+summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", device=-1)
 
 def summarize_text(text):
     """Summarizes text based on dynamic length preference from memory."""
