@@ -1,7 +1,11 @@
-# Capstone_Research_Assistant_Agent
-ITAI-2376 Team #1 
+# Capstone_Research_Assistant_Agent 🏭
 
-# 🤖 Hybrid AI Research Agent
+### 🏆 Capstone Project | Team Exceptional (Group 1)
+**Course:** ITAI 2376  
+**Authors:** Richard Evans, Nezar Khalfallh, Sufyan Rafiq, Hayden Wood
+
+---
+## 📖 Project Showcase
 
 A Python-based agent that performs autonomous web research, evaluates source credibility, and synthesizes summaries using the BART transformer model. It features a hybrid search architecture (DuckDuckGo + Wikipedia Fallback) and a Reinforcement Learning feedback loop to adapt to user preferences.
 
