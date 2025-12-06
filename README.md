@@ -47,7 +47,6 @@ The **Graphical User Interface (GUI)** for this agent is built using Gradio, a P
 * **Code Reference:** The `with gr.Blocks() as demo:` block in `app.py` defines the layout, buttons, and event triggers.
 * **Activity:** When you execute `python app.py`, the script launches a local web server (Client-Server model). By using the `share=True` parameter, it creates a secure tunnel that generates a public URL, allowing you to interact with the agent through your web browser even when it is running on a remote cloud Codespace.
 
-[Image of client server network diagram]
 
 
 ### Data Flow Graph
@@ -70,7 +69,7 @@ graph TD;
 
 ```
 ---
-## 🛠️ Setup & Installation
+## 🛠️ Installation & Running Instructions
 
 1.  **Clone the Repository**
     ```bash
