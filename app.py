@@ -60,3 +60,4 @@ if __name__ == "__main__":
     # server_name="0.0.0.0" allows external connections (fixes Docker/WSL issues)
     # share=True creates a public link (fixes firewall/port issues)
     demo.launch(server_name="0.0.0.0", share=True)
+ 
