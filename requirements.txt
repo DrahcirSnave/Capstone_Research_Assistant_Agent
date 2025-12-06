@@ -1,7 +1,6 @@
 gradio>=4.0.0
-transformers
-sentencepiece
 duckduckgo-search
 wikipedia
-torch
-accelerate
+sumy
+nltk
+numpy
