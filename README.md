@@ -26,13 +26,18 @@ A Python-based agent that performs autonomous web research, evaluates source cre
     pip install -r requirements.txt
     ```
 
-3.  **Run the Application**
+3.  **Run the Web Interface**
+    Run the application using the following command:
     ```bash
     python app.py
     ```
 
-4.  **Access the UI**
-    Open your browser to the local URL provided in the terminal (usually `http://127.0.0.1:7860`).
+4.  **Access the GUI**
+    The terminal will display two URLs. Choose the one that works for your setup:
+    * **Local URL:** `http://127.0.0.1:7860`  
+        *(Try this first—works for standard setups)*
+    * **Public URL:** `https://<random-id>.gradio.live`  
+        *(Use this if the local link refuses to connect)*
 
 ## 📂 Project Structure
 * `app.py`: The Gradio user interface.
