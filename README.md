@@ -1,4 +1,4 @@
-# Capstone_Research_Assistant_Agent 🔎📚
+# Capstone_Research_Assistant_Agent 🤔💻
 
 ### 🏆 Capstone Project | Team Exceptional (Group 1)
 **Course:** ITAI 2376  
