@@ -35,7 +35,7 @@ See the full report in the **ARCHITECTURE_REPORT.md** file which details the app
 ---
 ## 🎥 Formal Project Presentation
 You can view our full project presentation slides here: 
-[**View Final Presentation Slides**](./Deep_Learning_ITAI2376_Portfolio.pptx)
+[**View Portfolio Presentation Slides**](./Deep_Learning_ITAI2376_Portfolio.pptx)
 
 *(Note: Please download the file to view the full PowerPoint)*
 
