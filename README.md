@@ -24,13 +24,21 @@ See the full report in the **ARCHITECTURE_REPORT.md** file which details the app
 ---
 ### 📊 Key Results
 
-Resilient Architecture: Implemented a "fail-safe" hybrid retrieval strategy that automatically detects search engine blocks and pivots to Wikipedia, ensuring zero downtime during queries.
+* **Resilient Architecture:** Implemented a "fail-safe" hybrid retrieval strategy that automatically detects search engine blocks and pivots to Wikipedia, ensuring zero downtime during queries.
 
-Offline Optimization: Eliminated "403 Forbidden" API errors and reduced processing latency by migrating from heavy cloud-based transformers to a lightweight, local sumy LSA summarizer.
+* **Offline Optimization:** Eliminated "403 Forbidden" API errors and reduced processing latency by migrating from heavy cloud-based transformers to a lightweight, local sumy LSA summarizer.
 
-Adaptive Learning: Demonstrated a functional Reinforcement Learning (RL) loop where user feedback ("Too Long"/"Too Short") successfully updated persistent memory configurations, altering the agent's behavior in subsequent runs.
+* **Adaptive Learning:** Demonstrated a functional Reinforcement Learning (RL) loop where user feedback ("Too Long"/"Too Short") successfully updated persistent memory configurations, altering the agent's behavior in subsequent runs.
 
-Safe User Experience: Integrated a Gradio web interface with strict input validation, successfully filtering 100% of prohibited keywords during safety testing.
+* **Safe User Experience:** Integrated a Gradio web interface with strict input validation, successfully filtering 100% of prohibited keywords during safety testing.
+
+---
+## 🎥 Formal Project Presentation
+You can view our full project presentation slides here: **ADD POWERPOINT from Hayden**
+
+*(Note: Please download the file to view the full PowerPoint)*
+
+---
 
 ## 🛠️ Setup & Installation
 
