@@ -18,8 +18,7 @@ def format_output(topic):
     output_md += "### 📚 References\n"
 
     for source in response['sources']:
-        cred_icon = "🟢" if "High" in source['credibility'] else "⚠️"
-        output_md += f"* {cred_icon} 🔗 [{source['title']}]({source['url']}) - _{source['credibility']}_\n"
+        output_md += f"* 🔗 [{source['title']}]({source['url']}) - _{source['credibility']}_\n"
 
     return output_md
 
@@ -29,7 +28,8 @@ def handle_feedback(feedback_type):
     return f"Memory updated: Preference set to '{feedback_type}'."
 
 # --- UI LAYOUT ---
-with gr.Blocks(theme=gr.themes.Soft()) as demo:
+# UPDATED: Removed 'theme=' argument to prevent crashes on older Gradio versions
+with gr.Blocks() as demo:
     gr.Markdown("# 🤖 AI Research Agent (Hybrid)")
     
     with gr.Row():
@@ -56,7 +56,6 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     btn_long.click(fn=lambda: handle_feedback("too short"), outputs=feedback_status)
 
 if __name__ == "__main__":
-    # UPDATED LAUNCH COMMAND
     # server_name="0.0.0.0" allows external connections (fixes Docker/WSL issues)
     # share=True creates a public link (fixes firewall/port issues)
     demo.launch(server_name="0.0.0.0", share=True)
