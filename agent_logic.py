@@ -1,23 +1,43 @@
 import time
 import wikipedia
+import nltk
 from duckduckgo_search import DDGS
-from transformers import pipeline
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lsa import LsaSummarizer
+from sumy.nlp.stemmers import Stemmer
+from sumy.utils import get_stop_words
 from utils import load_memory, evaluate_source, safety_check
 
-# Initialize Model
-print("Loading Summarization Model...")
-# Using cpu explicitly here to be safe on standard codespaces
-# URL: https://huggingface.co/sshleifer/distilbart-cnn-12-6
-summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", device=-1)
+# --- INITIALIZATION ---
+print("Loading Local Summarizer...")
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+    nltk.download('punkt_tab')
+
+# Initialize Sumy (LSA Algorithm)
+stemmer = Stemmer("english")
+summarizer = LsaSummarizer(stemmer)
+summarizer.stop_words = get_stop_words("english")
 
 def summarize_text(text):
-    """Summarizes text based on dynamic length preference from memory."""
+    """
+    Summarizes text using LSA (Latent Semantic Analysis).
+    Converts 'preferred_length' (tokens) from memory into 'sentence_count'.
+    """
     memory = load_memory()
-    max_len = memory["preferred_summary_length"]
-    
+    # Map token length (e.g., 150) to roughly sentence count (e.g., 3-5)
+    # Approx 30 tokens per sentence
+    target_tokens = memory.get("preferred_summary_length", 150)
+    num_sentences = max(2, target_tokens // 40) 
+
     try:
-        # Dynamic length parameters based on RL feedback
-        return summarizer(text, max_length=max_len, min_length=max_len//2, do_sample=False)[0]['summary_text']
+        parser = PlaintextParser.from_string(text, Tokenizer("english"))
+        summary_sentences = summarizer(parser.document, num_sentences)
+        # Join sentences into a single string
+        return " ".join([str(s) for s in summary_sentences])
     except Exception as e:
         return f"Summarizer error: {str(e)}"
 
@@ -38,7 +58,7 @@ def research_agent_hybrid(topic):
     for backend in backends:
         try:
             with DDGS() as ddgs:
-                search_gen = ddgs.text(topic, max_results=7, backend=backend)
+                search_gen = ddgs.text(topic, max_results=10, backend=backend)
                 results = list(search_gen)
             if results:
                 break 
@@ -57,7 +77,7 @@ def research_agent_hybrid(topic):
                 results.append({
                     "title": page.title,
                     "url": page.url,
-                    "body": page.summary,
+                    "body": page.summary, # Wiki summary is already good
                     "credibility": "High credibility (Wikipedia)"
                 })
         except Exception as e:
@@ -66,10 +86,11 @@ def research_agent_hybrid(topic):
     if not results:
         return "⚠️ All research methods failed. Please try again later."
 
-    # --- PROCESSING & SUMMARIZATION ---
+    # --- PROCESSING ---
     combined_text = ""
     report = []
 
+    # Process results
     for r in results[:5]:
         title = r.get("title", "Untitled")
         snippet = r.get("body", r.get("content", ""))
@@ -83,15 +104,17 @@ def research_agent_hybrid(topic):
         })
         combined_text += snippet + " "
 
-    # Synthesize Summary
+    # --- SUMMARIZATION ---
     final_summary = ""
+    # If using Wikipedia, we can just use the first 5 sentences of the page summary
     if source_type == "Wikipedia":
-        final_summary = combined_text[:1500] 
+        final_summary = combined_text[:2000]
     else:
         if len(combined_text) < 50:
             final_summary = "Not enough data to summarize."
         else:
-            final_summary = summarize_text(combined_text[:3000])
+            # Use Sumy for web results
+            final_summary = summarize_text(combined_text)
 
     return {
         "topic": topic,
