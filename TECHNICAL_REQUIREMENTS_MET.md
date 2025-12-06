@@ -1,5 +1,3 @@
-import os
-
 # Evaluation of Requirements Summary
 
 **Status:** ✅ **All Requirements Met**
