@@ -1,1 +1,6 @@
-
+gradio
+transformers
+sentencepiece
+duckduckgo-search
+wikipedia
+torch
