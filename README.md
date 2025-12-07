@@ -1,6 +1,6 @@
 # Capstone_Research_Assistant_Agent 🤔💻
 
-### 🏆 Capstone Project | Team Exceptional (Group 1)
+### 🏆 Capstone Project | Team 1
 **Course:** ITAI 2376  
 **Authors:** Richard Evans, Nezar Khalfallh, Sufyan Rafiq, Hayden Wood
 
