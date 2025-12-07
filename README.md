@@ -21,9 +21,7 @@ See the full report in the **ARCHITECTURE_REPORT.md** file which details the app
 * **Adaptive Memory:** Learns user preferences for summary length over time.
 * **Gradio UI:** Clean, browser-based interface.
 
-```
 
-```
 ---
 ### 📊 Key Results
 
