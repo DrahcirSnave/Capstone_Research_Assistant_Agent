@@ -22,8 +22,9 @@ See the full report in the **ARCHITECTURE_REPORT.md** file which details the app
 * **Gradio UI:** Clean, browser-based interface.
 
 ```
-See the full report in the **TECHNICAL_REQUIRENTS_MET.md** file which details the approach to ensure reliability and precision:  
+See the full report of features in the **TECHNICAL_REQUIRENTS_MET.md** file:
 
+```
 ---
 ### 📊 Key Results
 
